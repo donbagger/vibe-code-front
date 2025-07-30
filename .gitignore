@@ -94,3 +94,18 @@ temp/
 
 # Vercel
 .vercel
+
+# TypeScript build info
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+tsconfig.node.tsbuildinfo
+
+# Vite generated files
+vite.config.d.ts
+vite.config.js
+
+# Local development files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

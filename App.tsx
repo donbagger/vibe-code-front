@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./components/ui/button";
 import { Badge } from "./components/ui/badge";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Separator } from "./components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { CountdownTimer } from "./components/CountdownTimer";
-import { PartnerBadge } from "./components/PartnerBadge";
 import { AIInteractionDemo } from "./components/AIInteractionDemo";
 import { 
   Calendar, 

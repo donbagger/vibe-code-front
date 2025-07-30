@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 
@@ -21,7 +21,6 @@ export const AutoPlayText: React.FC<AutoPlayTextProps> = ({
   loopDelay = 2000, // 2 seconds between loops
 }) => {
   const textRef = useRef<HTMLDivElement>(null);
-  const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const animateText = (textIndex: number) => {
@@ -44,7 +43,6 @@ export const AutoPlayText: React.FC<AutoPlayTextProps> = ({
         // Move to next text after a delay
         setTimeout(() => {
           const nextIndex = (textIndex + 1) % texts.length;
-          setCurrentTextIndex(nextIndex);
           animateText(nextIndex);
         }, loopDelay);
       },

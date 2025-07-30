@@ -1,8 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
-import { Card, CardContent } from './ui/card';
-import { Bot, User, Code, CheckCircle } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 // Register the TextPlugin
 gsap.registerPlugin(TextPlugin);
@@ -13,7 +12,6 @@ interface AIInteractionDemoProps {
 
 export const AIInteractionDemo: React.FC<AIInteractionDemoProps> = ({ isScrolled = false }) => {
   const [currentPhase, setCurrentPhase] = useState<'user-prompt' | 'ai-thinking' | 'ai-code' | 'complete'>('user-prompt');
-  const [isPlaying, setIsPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
   
   const userPromptRef = useRef<HTMLDivElement>(null);
@@ -41,12 +39,11 @@ export const AIInteractionDemo: React.FC<AIInteractionDemoProps> = ({ isScrolled
   }, [isScrolled, hasStarted]);
 
   const startAnimation = () => {
-    setIsPlaying(true);
     setCurrentPhase('user-prompt');
 
     const timeline = gsap.timeline({
       onComplete: () => {
-        setIsPlaying(false);
+        // Animation complete
       }
     });
 

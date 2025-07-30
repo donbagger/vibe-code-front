@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 
@@ -28,13 +28,11 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
 }) => {
   const textRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     if (!textRef.current) return;
 
-    setIsAnimating(true);
     setIsComplete(false);
 
     // Clear any existing text
@@ -46,7 +44,6 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     const tl = gsap.timeline({
       delay,
       onComplete: () => {
-        setIsAnimating(false);
         setIsComplete(true);
         onComplete?.();
       },

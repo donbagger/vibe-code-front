@@ -3,7 +3,6 @@ import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
-import { Badge } from './ui/badge';
 import { 
   Bot, 
   Code, 
@@ -105,7 +104,7 @@ export const AIDevelopmentDemo: React.FC<AIDevelopmentDemoProps> = ({ className 
     });
 
     // Animate through each step
-    steps.forEach((step, index) => {
+    steps.forEach((_, index) => {
       timeline.add(() => {
         setCurrentStep(index);
       }, index * 2); // 2 seconds per step for faster animation
