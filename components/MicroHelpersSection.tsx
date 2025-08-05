@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
-import { ExternalLink, ChevronDown, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronDown } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 interface MicroHelper {
@@ -95,12 +95,6 @@ const microHelpers: MicroHelper[] = [
     category: 'utility'
   },
   {
-    name: "formatPercentage()",
-    description: "Format numbers as percentages with symbols",
-    example: 'formatPercentage(15.5, "+")',
-    category: 'utility'
-  },
-  {
     name: "percentChange()",
     description: "Calculate percentage change between two values",
     example: 'percentChange(100, 150)',
@@ -113,24 +107,16 @@ const microHelpers: MicroHelper[] = [
     category: 'utility'
   },
   {
-    name: "findNewPools()",
-    description: "Find pools created within time window",
-    example: 'findNewPools(pools, 60) // 60 minutes',
-    category: 'utility',
-    highlight: true
+    name: "sparkline()",
+    description: "Create simple sparkline from number series",
+    example: 'sparkline([10, 12, 11, 13, 15], 20)',
+    category: 'utility'
   },
   {
     name: "printTable()",
     description: "Display data in formatted table",
     example: 'printTable(pools, ["pair_name", "volume_usd"])',
     category: 'utility'
-  },
-  {
-    name: "getLatestPrice()",
-    description: "Get latest price of a token by network and address",
-    example: 'getLatestPrice("solana", "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN")',
-    category: 'utility',
-    highlight: true
   },
   {
     name: "arbitrageGap()",
@@ -145,16 +131,24 @@ const microHelpers: MicroHelper[] = [
     category: 'utility'
   },
   {
+    name: "findNewPools()",
+    description: "Find pools created within time window on a network",
+    example: 'findNewPools("solana", 15)',
+    category: 'utility',
+    highlight: true
+  },
+  {
     name: "calculateRollingMean()",
     description: "Calculate rolling mean (moving average)",
     example: 'calculateRollingMean([10, 12, 11, 13, 15], 3)',
     category: 'utility'
   },
   {
-    name: "sortByVolume()",
-    description: "Sort pools by trading volume",
-    example: 'sortByVolume(pools, "desc")',
-    category: 'utility'
+    name: "getLatestPrice()",
+    description: "Get latest price of a token by network and address",
+    example: 'getLatestPrice("solana", "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN")',
+    category: 'utility',
+    highlight: true
   },
   {
     name: "loadEnv()",
@@ -203,12 +197,6 @@ const microHelpers: MicroHelper[] = [
     description: "Convert JSON-like data to structured format",
     example: 'asDf(apiResponse)',
     category: 'utility'
-  },
-  {
-    name: "getPoolAge()",
-    description: "Calculate how old a pool is in days",
-    example: 'getPoolAge(pool.created_at)',
-    category: 'utility'
   }
 ];
 
@@ -228,22 +216,22 @@ export function MicroHelpersSection() {
       <div className="text-center space-y-4">
         <h2 className="text-3xl md:text-4xl text-foreground">DexPaprika API Helpers</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          32 ready-to-use functions across Python, JavaScript & Go
+          30 ready-to-use functions across Python, JavaScript & Go
         </p>
       </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
         <Card className="text-center p-4">
-          <div className="text-2xl font-medium text-primary">{microHelpers.length}</div>
+          <div className="text-2xl font-medium text-primary">30</div>
           <div className="text-sm text-muted-foreground">Total Functions</div>
         </Card>
         <Card className="text-center p-4">
-          <div className="text-2xl font-medium text-blue-500">{apiHelpers.length}</div>
+          <div className="text-2xl font-medium text-blue-500">12</div>
           <div className="text-sm text-muted-foreground">API Functions</div>
         </Card>
         <Card className="text-center p-4">
-          <div className="text-2xl font-medium text-green-500">{utilityHelpers.length}</div>
+          <div className="text-2xl font-medium text-green-500">18</div>
           <div className="text-sm text-muted-foreground">Utility Functions</div>
         </Card>
       </div>
@@ -255,7 +243,7 @@ export function MicroHelpersSection() {
           <p className="text-sm text-muted-foreground">Most powerful helpers to get you started</p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {highlightHelpers.map((helper, index) => (
             <Card 
               key={index}
@@ -275,7 +263,7 @@ export function MicroHelpersSection() {
                 <p className="text-sm text-muted-foreground mb-2">
                   {helper.description}
                 </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
+                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white break-words">
                   {helper.example}
                 </div>
               </CardContent>
