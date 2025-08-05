@@ -6,6 +6,7 @@ import { Separator } from "./components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./components/ui/accordion";
 import { CountdownTimer } from "./components/CountdownTimer";
 import { AIInteractionDemo } from "./components/AIInteractionDemo";
+import { MicroHelpersSection } from "./components/MicroHelpersSection";
 import { 
   Calendar, 
   Code, 
@@ -55,73 +56,73 @@ export default function App() {
           : 'bg-transparent py-3'
       }`}>
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between w-full">
-            {/* DexPaprika Logo/Icon */}
-            <div className="flex items-center">
-              <img 
-                src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
-                alt="DexPaprika" 
-                className={`transition-all duration-300 ${
-                  isScrolled ? 'h-6' : 'h-8'
-                }`}
-              />
-            </div>
+                      <div className="grid grid-cols-3 items-center w-full">
+              {/* DexPaprika Logo/Icon */}
+              <div className="flex justify-center">
+                <img 
+                  src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
+                  alt="DexPaprika" 
+                  className={`transition-all duration-300 ${
+                    isScrolled ? 'h-6' : 'h-8'
+                  }`}
+                />
+              </div>
 
-            {/* Navigation Items */}
-            <div className="flex items-center space-x-3 md:space-x-4">
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="transition-all duration-300 px-3 py-2 h-10 text-sm"
-              >
-                {isScrolled ? <Home className="w-4 h-4" /> : "Home"}
-              </Button>
-              
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="transition-all duration-300 px-3 py-2 h-10 text-sm"
-              >
-                {isScrolled ? <Info className="w-4 h-4" /> : "About"}
-              </Button>
-              
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="transition-all duration-300 px-3 py-2 h-10 text-sm"
-              >
-                {isScrolled ? <HelpCircle className="w-4 h-4" /> : "Help"}
-              </Button>
-              
-              <Button 
-                variant="ghost" 
-                size="sm"
-                className="transition-all duration-300 px-3 py-2 h-10 text-sm"
-              >
-                {isScrolled ? <MessageSquare className="w-4 h-4" /> : "Contact"}
-              </Button>
-              
-              <Separator orientation="vertical" className="h-5" />
-              
-              <Button 
-                size="sm"
-                className="bg-primary hover:bg-primary/90 transition-all duration-300 px-4 py-2 h-10 text-sm"
-              >
-                {isScrolled ? <GitFork className="w-4 h-4" /> : "Get Started"}
-              </Button>
-            </div>
+              {/* Navigation Items */}
+              <div className="flex items-center justify-center space-x-3 md:space-x-4">
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                >
+                  {isScrolled ? <Home className="w-4 h-4" /> : "Home"}
+                </Button>
+                
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                >
+                  {isScrolled ? <Info className="w-4 h-4" /> : "About"}
+                </Button>
+                
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                >
+                  {isScrolled ? <HelpCircle className="w-4 h-4" /> : "Help"}
+                </Button>
+                
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                >
+                  {isScrolled ? <MessageSquare className="w-4 h-4" /> : "Contact"}
+                </Button>
+                
+                <Separator orientation="vertical" className="h-5" />
+                
+                <Button 
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 transition-all duration-300 px-4 py-2 h-10 text-sm"
+                >
+                  {isScrolled ? <GitFork className="w-4 h-4" /> : "Get Started"}
+                </Button>
+              </div>
 
-            {/* CoinPaprika Logo/Icon */}
-            <div className="flex items-center">
-              <img 
-                src={isScrolled ? "/CoinPaprika_icon.svg" : "/CoinPaprika_logo.svg"} 
-                alt="CoinPaprika" 
-                className={`transition-all duration-300 ${
-                  isScrolled ? 'h-6' : 'h-8'
-                }`}
-              />
+              {/* DexPaprika Logo/Icon */}
+              <div className="flex justify-center">
+                <img 
+                  src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
+                  alt="DexPaprika" 
+                  className={`transition-all duration-300 ${
+                    isScrolled ? 'h-6' : 'h-8'
+                  }`}
+                />
+              </div>
             </div>
-          </div>
         </div>
       </nav>
       {/* SEO Meta Tags would go in the head */}
@@ -152,7 +153,7 @@ export default function App() {
                 </h1>
                 <p className="text-xl md:text-2xl text-foreground/80 max-w-4xl mx-auto">
                   Build crypto/DeFi utilities with{" "}
-                  <span className="text-primary font-medium">CoinPaprika API</span>{" "}
+                  <span className="text-primary font-medium">DexPaprika API</span>{" "}
                   + AI in{" "}
                   <span className="text-primary font-medium">≤50 lines</span> of code
                 </p>
@@ -179,11 +180,11 @@ export default function App() {
                   <div className="text-sm text-muted-foreground">Prize Value Per Edition</div>
                 </div>
                 <div className="text-center p-4 bg-[#1A1A1A] rounded-lg border border-primary/20 shadow-lg">
-                  <div className="text-2xl font-medium text-primary">30+</div>
-                  <div className="text-sm text-muted-foreground">Micro-Helpers Ready</div>
+                  <div className="text-2xl font-medium text-primary">21</div>
+                  <div className="text-sm text-muted-foreground">API Helpers Ready</div>
                 </div>
                 <div className="text-center p-4 bg-[#1A1A1A] rounded-lg border border-primary/20 shadow-lg">
-                  <div className="text-2xl font-medium text-primary">4</div>
+                  <div className="text-2xl font-medium text-primary">3</div>
                   <div className="text-sm text-muted-foreground">Languages Supported</div>
                 </div>
               </div>
@@ -203,15 +204,15 @@ export default function App() {
                   <GitFork className="w-5 h-5 mr-2" />
                   Fork Starter Template
                 </Button>
-                <Button 
-                  variant="outline" 
-                  size="lg" 
-                  className="px-8 py-3 border-primary/30 text-primary hover:bg-primary/10"
-                  onClick={() => window.open('https://api.coinpaprika.com', '_blank')}
-                >
-                  <FileText className="w-5 h-5 mr-2" />
-                  API Documentation
-                </Button>
+                                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="px-8 py-3 border-primary/30 text-primary hover:bg-primary/10"
+                    onClick={() => window.open('https://api.dexpaprika.com', '_blank')}
+                  >
+                    <FileText className="w-5 h-5 mr-2" />
+                    API Documentation
+                  </Button>
               </div>
             </div>
 
@@ -241,7 +242,7 @@ export default function App() {
                 </div>
                 <h3 className="mb-2">1. Fork & Setup</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Fork our starter template with 30+ micro-helpers in Python, JS, Go & Rust
+                  Fork our starter template with 21 API helpers in Python, JavaScript & Go
                 </p>
                 <Button 
                   variant="outline" 
@@ -261,9 +262,9 @@ export default function App() {
                   <Code className="w-8 h-8 text-blue-400" />
                 </div>
                 <h3 className="mb-2">2. Build with AI</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Use CoinPaprika API + Partner SDKs. Vibe-code with Cursor, Copilot, or any AI IDE
-                </p>
+                                  <p className="text-sm text-muted-foreground mb-4">
+                    Use DexPaprika API + Helper functions. Vibe-code with Cursor, Copilot, or any AI IDE
+                  </p>
                 <Button 
                   variant="outline" 
                   size="sm"
@@ -321,112 +322,7 @@ export default function App() {
 
 
 
-        {/* Helper Functions Examples */}
-        <section className="space-y-12">
-          <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl text-foreground">Micro-Helpers Available</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              30+ ready-to-use functions to accelerate your development
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">get_json()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Fetch and parse JSON data from any API endpoint
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  get_json("api.coinpaprika.com/v1/coins")
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">mcp_df()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Convert market data to pandas DataFrame instantly
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  mcp_df(coins_data, "price")
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">quick_chart()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Generate beautiful charts with one line of code
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  quick_chart(data, "line", "Price Over Time")
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">price_alert()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Set up price alerts and notifications
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  price_alert("bitcoin", "greater than 50000")
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">portfolio_calc()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Calculate portfolio metrics and performance
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  portfolio_calc(holdings, "total_value")
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle className="text-sm font-mono text-primary">whale_tracker()</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground mb-2">
-                  Track large transactions and whale movements
-                </p>
-                <div className="bg-zinc-800 p-2 rounded text-xs font-mono text-white">
-                  whale_tracker("ethereum", min_value=1000000)
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center">
-            <Button 
-              variant="outline" 
-              className="border-primary/30 text-primary hover:bg-primary/10"
-              onClick={() => window.open('https://github.com/coinpaprika/vibe-jam', '_blank')}
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              View All 30+ Helpers
-            </Button>
-          </div>
-        </section>
+        <MicroHelpersSection />
 
         {/* Specific Project Examples */}
         <section className="space-y-12">
@@ -467,7 +363,7 @@ export default function App() {
                   Track large transactions (over $1M) and notify via Telegram with transaction details and market impact.
                 </p>
                 <div className="text-xs bg-zinc-800 p-2 rounded text-white">
-                  <strong>Tech:</strong> whale_tracker() + portfolio_calc() + Telegram API
+                  <strong>Tech:</strong> getPoolTransactions() + topN() + formatCurrency()
                 </div>
               </CardContent>
             </Card>
@@ -484,7 +380,7 @@ export default function App() {
                   Scan multiple DeFi protocols to find highest APY opportunities and risk-adjusted returns.
                 </p>
                 <div className="text-xs bg-zinc-800 p-2 rounded text-white">
-                  <strong>Tech:</strong> mcp_df() + yield_calc() + risk_score()
+                  <strong>Tech:</strong> getTokenPools() + sortByVolume() + formatPercentage()
                 </div>
               </CardContent>
             </Card>
@@ -501,7 +397,7 @@ export default function App() {
                   Auto-suggest portfolio rebalancing based on target allocations and current market conditions.
                 </p>
                 <div className="text-xs bg-zinc-800 p-2 rounded text-white">
-                  <strong>Tech:</strong> portfolio_calc() + rebalance_suggest() + quick_chart()
+                  <strong>Tech:</strong> getTokenDetails() + percentChange() + printTable()
                 </div>
               </CardContent>
             </Card>
@@ -518,7 +414,7 @@ export default function App() {
                   Find arbitrage opportunities across exchanges and calculate potential profits minus gas fees.
                 </p>
                 <div className="text-xs bg-zinc-800 p-2 rounded text-white">
-                  <strong>Tech:</strong> price_compare() + gas_calc() + profit_estimate()
+                  <strong>Tech:</strong> findArbitrageOpportunities() + formatCurrency() + printTable()
                 </div>
               </CardContent>
             </Card>
@@ -535,7 +431,7 @@ export default function App() {
                   Monitor wallets of successful traders and get notified when they make new moves.
                 </p>
                 <div className="text-xs bg-zinc-800 p-2 rounded text-white">
-                  <strong>Tech:</strong> wallet_monitor() + smart_money_detect() + alert_system()
+                  <strong>Tech:</strong> getPoolTransactions() + getPoolAge() + sparkline()
                 </div>
               </CardContent>
             </Card>
@@ -637,8 +533,8 @@ export default function App() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
-                <p className="text-sm">• 30+ micro-helpers (get_json, mcp_df, quick_chart)</p>
-                <p className="text-sm">• Python, JavaScript, Go & Rust support</p>
+                <p className="text-sm">• 21 API helpers (getNetworks, getTokenPools, topN)</p>
+                <p className="text-sm">• Python, JavaScript & Go support</p>
                 <p className="text-sm">• MCP server integration</p>
                 <p className="text-sm">• No API key needed ✨</p>
               </CardContent>
@@ -728,7 +624,7 @@ export default function App() {
                   <p className="text-sm">Add these topics to your GitHub repository:</p>
                   <div className="flex flex-wrap gap-2 mt-2">
                     <Badge variant="outline" className="border-primary/30 text-primary">paprika-vibe-0825</Badge>
-                    <Badge variant="outline" className="border-primary/30 text-primary">coinpaprika-api</Badge>
+                    <Badge variant="outline" className="border-primary/30 text-primary">dexpaprika-api</Badge>
                     <Badge variant="outline" className="border-primary/30 text-primary">crypto-utility</Badge>
                     <Badge variant="outline" className="border-primary/30 text-primary">ai-powered</Badge>
                     <Badge variant="outline" className="border-primary/30 text-primary">defi-tools</Badge>
@@ -756,7 +652,7 @@ export default function App() {
                     <h4 className="mb-4 text-primary">✅ Requirements</h4>
                     <ul className="space-y-2 text-sm">
                       <li>• ≤50 lines of functional code</li>
-                      <li>• Use CoinPaprika API + Partner SDK</li>
+                      <li>• Use DexPaprika API + Helper functions</li>
                       <li>• Include required badges & topic tags</li>
                       <li>• Submit via GitHub Issue form</li>
                       <li>• Account ≥30 days or ≥3 public repos</li>
@@ -807,16 +703,16 @@ export default function App() {
               <AccordionItem value="item-2">
                 <AccordionTrigger>Do I really not need an API key?</AccordionTrigger>
                 <AccordionContent>
-                  Correct! The CoinPaprika API is completely free and requires no authentication for basic endpoints. 
-                  Our MCP server integration also handles authentication seamlessly when using AI IDEs like Cursor or Claude Desktop.
+                  Correct! The DexPaprika API is completely free and requires no authentication for basic endpoints. 
+                  Our helper functions work seamlessly with the API to make development faster.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3">
                 <AccordionTrigger>What programming languages can I use?</AccordionTrigger>
                 <AccordionContent>
-                  We provide micro-helpers in Python, JavaScript, Go, and Rust. However, you can use any programming language 
-                  as long as you integrate with the CoinPaprika API and partner SDK. Our helper functions just make development faster.
+                  We provide API helpers in Python, JavaScript, and Go. However, you can use any programming language 
+                  as long as you integrate with the DexPaprika API. Our helper functions just make development faster.
                 </AccordionContent>
               </AccordionItem>
 
@@ -878,7 +774,7 @@ export default function App() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Complete repository with 30+ micro-helpers, examples, and GitHub Actions setup.
+                  Complete repository with 21 API helpers, examples, and GitHub Actions setup.
                 </p>
                 <Button 
                   className="w-full bg-[#43AA05] hover:bg-[#43AA05]/90 text-white" 
@@ -899,12 +795,12 @@ export default function App() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Complete CoinPaprika API documentation with examples and endpoint references.
+                  Complete DexPaprika API documentation with examples and endpoint references.
                 </p>
                 <Button 
                   variant="outline" 
                   className="w-full border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
-                  onClick={() => window.open('https://api.coinpaprika.com', '_blank')}
+                  onClick={() => window.open('https://api.dexpaprika.com', '_blank')}
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   API Docs

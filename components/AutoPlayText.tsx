@@ -76,18 +76,18 @@ export const AutoPlayText: React.FC<AutoPlayTextProps> = ({
 // Example usage component
 export const AutoPlayExample: React.FC = () => {
   const cryptoTexts = [
-    "Building crypto portfolio tracker...",
-    "Integrating CoinPaprika API...",
-    "Generating real-time charts...",
-    "Setting up price alerts...",
+    "Building DEX pool analyzer...",
+    "Integrating DexPaprika API...",
+    "Fetching top pools data...",
+    "Analyzing trading volumes...",
     "Deploying to production...",
   ];
 
   const codeTexts = [
-    "function createUtility() {",
-    "  const data = get_json('api.coinpaprika.com/v1/coins');",
-    "  const chart = quick_chart(data, 'line', 'Prices');",
-    "  return 'Utility ready!';",
+    "function analyzePools() {",
+    "  const pools = getNetworkPools('ethereum');",
+    "  const topPools = topN(pools, 'volume_usd', 5);",
+    "  return 'Analysis complete!';",
     "}",
   ];
 

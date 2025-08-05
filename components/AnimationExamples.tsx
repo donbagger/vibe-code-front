@@ -67,8 +67,8 @@ export const AnimationExamples: React.FC = () => {
             
             {showCode && (
               <AnimatedCode
-                code={`function getCryptoData() {
-  return get_json("api.coinpaprika.com/v1/coins");
+                code={`function getPoolData() {
+  return getNetworkPools("ethereum", {limit: 10});
 }`}
                 speed={0.05}
                 className="text-xs"
@@ -97,7 +97,7 @@ export const AnimationExamples: React.FC = () => {
             
             {showText && (
               <AnimatedText
-                text="Building amazing crypto utilities..."
+                text="Building amazing DEX utilities..."
                 type="prompt"
                 speed={0.06}
                 className="text-sm"

@@ -46,20 +46,20 @@ export const AIDevelopmentDemo: React.FC<AIDevelopmentDemoProps> = ({ className 
     },
     {
       title: "Code Generation",
-      content: `function createPortfolioTracker() {
-  // Get real-time crypto data
-  const coins = get_json("api.coinpaprika.com/v1/coins");
+      content: `function createPoolAnalyzer() {
+  // Get top DEX pools
+  const pools = getNetworkPools("ethereum", {limit: 20});
   
-  // Calculate portfolio value
-  const portfolio = portfolio_calc(holdings, "total_value");
+  // Find new pools
+  const newPools = findNewPools(pools, 60);
   
-  // Generate live chart
-  quick_chart(portfolio, "line", "Portfolio Value");
+  // Get top 5 by volume
+  const topPools = topN(pools, "volume_usd", 5, "desc");
   
-  // Set up price alerts
-  price_alert("bitcoin", "changes by 5%");
+  // Display results
+  printTable(topPools, ["pair_name", "volume_usd"]);
   
-  return "Portfolio tracker ready!";
+  return "Pool analyzer ready!";
 }`,
       icon: Code,
       color: "text-green-400",
@@ -68,7 +68,7 @@ export const AIDevelopmentDemo: React.FC<AIDevelopmentDemoProps> = ({ className 
     },
     {
       title: "Testing & Validation",
-      content: "✅ API connection successful\n✅ Portfolio calculation working\n✅ Chart generation complete\n✅ Price alerts configured",
+      content: "✅ API connection successful\n✅ Pool data fetching working\n✅ Volume analysis complete\n✅ Results display configured",
       icon: CheckCircle,
       color: "text-green-500",
       bgColor: "bg-green-500/10",
@@ -76,7 +76,7 @@ export const AIDevelopmentDemo: React.FC<AIDevelopmentDemoProps> = ({ className 
     },
     {
       title: "Deployment Ready",
-      content: "🚀 Portfolio tracker deployed successfully!\n📊 Real-time data flowing\n🔔 Alerts configured\n📈 Charts updating live",
+      content: "🚀 Pool analyzer deployed successfully!\n📊 Real-time DEX data flowing\n🔍 Analysis running\n📈 Results updating live",
       icon: Zap,
       color: "text-yellow-400",
       bgColor: "bg-yellow-400/10",

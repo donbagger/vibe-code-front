@@ -18,16 +18,22 @@ export const AIInteractionDemo: React.FC<AIInteractionDemoProps> = ({ isScrolled
   const aiResponseRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLPreElement>(null);
 
-  const userPrompt = "Hey, create me a Solana alert system under 50 lines of code";
-  const aiResponse = "Sure, let's do it:";
-  const aiCode = `function createSolanaAlert() {
-  const solData = get_json("api.coinpaprika.com/v1/coins/solana");
-  const priceChange = calculatePriceChange(solData.price_24h_change);
-  if (Math.abs(priceChange) > 5) {
-    price_alert("solana", "changes by 5%");
-    sendNotification("Solana alert: " + priceChange + "% change");
-  }
-  return "Alert system ready!";
+  const userPrompt = "Hey, create me a DEX pool analyzer under 50 lines of code";
+  const aiResponse = "Sure, let's build it with DexPaprika API:";
+  const aiCode = `function analyzeTopPools() {
+  // Get top pools on Ethereum
+  const pools = getNetworkPools("ethereum", {limit: 10});
+  
+  // Find new pools created in last hour
+  const newPools = findNewPools(pools, 60);
+  
+  // Get top 5 by volume
+  const topPools = topN(pools, "volume_usd", 5, "desc");
+  
+  // Display results
+  printTable(topPools, ["pair_name", "volume_usd", "price_usd"]);
+  
+  return "Analysis complete!";
 }`;
 
   useEffect(() => {

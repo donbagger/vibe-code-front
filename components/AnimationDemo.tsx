@@ -16,27 +16,27 @@ export const AnimationDemo: React.FC = () => {
     "Generate a trading bot that uses technical indicators"
   ];
 
-  const demoCode = `function createCryptoUtility() {
-  // Get market data from CoinPaprika API
-  const data = get_json("api.coinpaprika.com/v1/coins");
+  const demoCode = `function createDEXUtility() {
+  // Get DEX pool data from DexPaprika API
+  const pools = getNetworkPools("ethereum", {limit: 20});
   
-  // Convert to DataFrame for analysis
-  const df = mcp_df(data, "price");
+  // Find new pools created recently
+  const newPools = findNewPools(pools, 60);
   
-  // Generate beautiful chart
-  quick_chart(df, "line", "Crypto Prices");
+  // Get top pools by volume
+  const topPools = topN(pools, "volume_usd", 5, "desc");
   
-  // Set up price alerts
-  price_alert("bitcoin", "greater than 50000");
+  // Display results in table
+  printTable(topPools, ["pair_name", "volume_usd"]);
   
-  return "Utility created successfully!";
+  return "DEX utility created successfully!";
 }`;
 
   const demoTexts = [
-    "Building amazing crypto utilities...",
-    "Integrating with CoinPaprika API...",
-    "Generating real-time market data...",
-    "Creating beautiful visualizations..."
+    "Building amazing DEX utilities...",
+    "Integrating with DexPaprika API...",
+    "Fetching real-time pool data...",
+    "Analyzing trading volumes..."
   ];
 
   const handlePlay = (loop = false) => {
