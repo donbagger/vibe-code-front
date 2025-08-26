@@ -27,9 +27,9 @@ import {
   AlertCircle,
   Home,
   Info,
-  HelpCircle,
   MessageSquare
 } from "lucide-react";
+import CopyPageAsMarkdownButton from "./components/CopyPageAsMarkdownButton";
 
 export default function App() {
   // Set submission deadline (example: February 28, 2025)
@@ -49,6 +49,39 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-background">
+      <CopyPageAsMarkdownButton />
+      {/* AI Export Blueprint: included in Markdown export, visually hidden */}
+      <section data-include-md="true" className="sr-only">
+        {`---
+title: Paprika Vibe-Code Challenge
+edition: 2025-02
+deadline_utc: 2025-02-28T23:59:59Z
+repo_url: https://github.com/coinpaprika/vibe-jam
+submit_url: https://github.com/coinpaprika/vibe-jam/issues/new
+docs_api_url: https://api.dexpaprika.com
+docs_mcp_url: https://mcp.coinpaprika.com
+contact_url: https://coinpaprika.com/contact/
+discord_url: https://discord.gg/coinpaprika
+---`}
+
+        Links:
+        - Repo: https://github.com/coinpaprika/vibe-jam
+        - Submit: https://github.com/coinpaprika/vibe-jam/issues/new
+        - API Docs: https://api.dexpaprika.com
+        - MCP Docs: https://mcp.coinpaprika.com
+        - Contact: https://coinpaprika.com/contact/
+        - Discord: https://discord.gg/coinpaprika
+
+        Constraints:
+        - Single script, ≤100 lines (functional lines only)
+        - External APIs/libraries count toward the limit (partner SDK excluded)
+        - Include required badges and topic tags
+
+        Scoring:
+        - Innovation: 40%
+        - Usefulness: 30%
+        - Community Love: 30%
+      </section>
       {/* Floating Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
@@ -59,13 +92,15 @@ export default function App() {
                       <div className="grid grid-cols-3 items-center w-full">
               {/* DexPaprika Logo/Icon */}
               <div className="flex justify-center">
-                <img 
-                  src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
-                  alt="DexPaprika" 
-                  className={`transition-all duration-300 ${
-                    isScrolled ? 'h-6' : 'h-8'
-                  }`}
-                />
+                <a href="https://dexpaprika.com" target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
+                    alt="DexPaprika" 
+                    className={`transition-all duration-300 ${
+                      isScrolled ? 'h-6' : 'h-8'
+                    }`}
+                  />
+                </a>
               </div>
 
               {/* Navigation Items */}
@@ -74,14 +109,18 @@ export default function App() {
                   variant="ghost" 
                   size="sm"
                   className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                  asChild
                 >
-                  {isScrolled ? <Home className="w-4 h-4" /> : "Home"}
+                  <a href="/">
+                    {isScrolled ? <Home className="w-4 h-4" /> : "Home"}
+                  </a>
                 </Button>
                 
                 <Button 
                   variant="ghost" 
                   size="sm"
                   className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                  onClick={() => { document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' }); }}
                 >
                   {isScrolled ? <Info className="w-4 h-4" /> : "About"}
                 </Button>
@@ -90,16 +129,11 @@ export default function App() {
                   variant="ghost" 
                   size="sm"
                   className="transition-all duration-300 px-3 py-2 h-10 text-sm"
+                  asChild
                 >
-                  {isScrolled ? <HelpCircle className="w-4 h-4" /> : "Help"}
-                </Button>
-                
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  className="transition-all duration-300 px-3 py-2 h-10 text-sm"
-                >
-                  {isScrolled ? <MessageSquare className="w-4 h-4" /> : "Contact"}
+                  <a href="https://coinpaprika.com/contact/" target="_blank" rel="noopener noreferrer">
+                    {isScrolled ? <MessageSquare className="w-4 h-4" /> : "Contact"}
+                  </a>
                 </Button>
                 
                 <Separator orientation="vertical" className="h-5" />
@@ -112,15 +146,17 @@ export default function App() {
                 </Button>
               </div>
 
-              {/* DexPaprika Logo/Icon */}
+              {/* CoinPaprika Logo/Icon */}
               <div className="flex justify-center">
-                <img 
-                  src={isScrolled ? "/DexPaprika_icon.svg" : "/DexPaprika_logo.svg"} 
-                  alt="DexPaprika" 
-                  className={`transition-all duration-300 ${
-                    isScrolled ? 'h-6' : 'h-8'
-                  }`}
-                />
+                <a href="https://coinpaprika.com" target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src={isScrolled ? "/CoinPaprika_icon.svg" : "/CoinPaprika_logo.svg"} 
+                    alt="CoinPaprika" 
+                    className={`transition-all duration-300 ${
+                      isScrolled ? 'h-6' : 'h-8'
+                    }`}
+                  />
+                </a>
               </div>
             </div>
         </div>
@@ -155,7 +191,7 @@ export default function App() {
                   Build crypto/DeFi utilities with{" "}
                   <span className="text-primary font-medium">DexPaprika API</span>{" "}
                   + AI in{" "}
-                  <span className="text-primary font-medium">≤50 lines</span> of code
+                  <span className="text-primary font-medium">≤100 lines</span> of code
                 </p>
                 
                 {/* No API Key Needed Highlight */}
@@ -199,20 +235,24 @@ export default function App() {
                 <Button 
                   size="lg" 
                   className="bg-[#43AA05] hover:bg-[#43AA05]/90 text-white px-8 py-3"
-                  onClick={() => window.open('https://github.com/coinpaprika/vibe-jam', '_blank')}
+                  asChild
                 >
-                  <GitFork className="w-5 h-5 mr-2" />
-                  Fork Starter Template
+                  <a href="https://github.com/coinpaprika/vibe-jam" target="_blank" rel="noopener noreferrer">
+                    <GitFork className="w-5 h-5 mr-2" />
+                    Fork Starter Template
+                  </a>
                 </Button>
-                                  <Button 
-                    variant="outline" 
-                    size="lg" 
-                    className="px-8 py-3 border-primary/30 text-primary hover:bg-primary/10"
-                    onClick={() => window.open('https://api.dexpaprika.com', '_blank')}
-                  >
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="px-8 py-3 border-primary/30 text-primary hover:bg-primary/10"
+                  asChild
+                >
+                  <a href="https://api.dexpaprika.com" target="_blank" rel="noopener noreferrer">
                     <FileText className="w-5 h-5 mr-2" />
                     API Documentation
-                  </Button>
+                  </a>
+                </Button>
               </div>
             </div>
 
@@ -226,12 +266,21 @@ export default function App() {
 
       <div className="container mx-auto px-4 py-16 space-y-24">
         {/* How It Works */}
-        <section className="space-y-12">
+        <section id="how-it-works" className="space-y-12">
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl text-foreground">How It Works</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Simple process, powerful results. Build crypto utilities that solve real problems.
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              This challenge is simple: start with our <b>starter repo</b>—it includes examples and helper functions so you can move fast. From there, build something genuinely useful on top of <b>DexPaprika</b> data.
             </p>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              Think beyond the basics. You could stream real‑time alerts, explore arbitrage opportunities, track new liquidity pools as they appear, or design tools that make portfolio decisions easier. If you already have an idea, use this as the backbone. If you don’t, experiment until something sparks.
+            </p>
+            <p className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+              The goal is to showcase an <i>innovative idea</i> powered by on‑chain data—clean, focused, and practical. Keep it approachable for others to read and remix.
+            </p>
+            <div className="inline-flex items-center gap-2 bg-zinc-900/40 border border-primary/20 px-3 py-2 rounded-lg text-xs text-muted-foreground">
+              <Shield className="w-4 h-4 text-primary" /> One rule: ship a single script ≤100 lines
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -248,10 +297,12 @@ export default function App() {
                   variant="outline" 
                   size="sm"
                   className="border-primary/30 text-primary hover:bg-primary/10"
-                  onClick={() => window.open('https://github.com/coinpaprika/vibe-jam', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Fork Now
+                  <a href="https://github.com/coinpaprika/vibe-jam" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Fork Now
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -269,10 +320,12 @@ export default function App() {
                   variant="outline" 
                   size="sm"
                   className="border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
-                  onClick={() => window.open('https://mcp.coinpaprika.com', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  MCP Docs
+                  <a href="https://mcp.coinpaprika.com" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    MCP Docs
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -310,10 +363,12 @@ export default function App() {
                   variant="outline" 
                   size="sm"
                   className="border-purple-500/30 text-purple-400 hover:bg-purple-500/10"
-                  onClick={() => window.open('https://github.com/coinpaprika/vibe-jam/issues/new', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Submit Project
+                  <a href="https://github.com/coinpaprika/vibe-jam/issues/new" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Submit Project
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -329,7 +384,7 @@ export default function App() {
           <div className="text-center space-y-4">
             <h2 className="text-3xl md:text-4xl text-foreground">Project Inspirations</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Real project ideas that you can build in ≤50 lines
+              Real project ideas that you can build in ≤100 lines
             </p>
           </div>
 
@@ -557,79 +612,71 @@ export default function App() {
           </div>
         </section>
 
-        {/* Required Badges */}
+        {/* Required Badges & Tags */}
         <section id="required-badges" className="space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl text-foreground">Required Badges</h2>
+            <h2 className="text-3xl md:text-4xl text-foreground">Required Badges & Tags</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Include these badges in your README for SEO optimization and community discovery
+              Two simple steps for SEO optimization and community discovery
             </p>
           </div>
 
           <div className="max-w-4xl mx-auto space-y-8">
+            {/* Step 1: Badges */}
             <Card className="hover:border-primary/50">
               <CardHeader>
-                <CardTitle>1. CoinPaprika Badge</CardTitle>
+                <CardTitle className="flex items-center">
+                  <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3">1</span>
+                  Include These Badges in Your README
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="bg-zinc-800 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-4 text-white">
-                  <pre>{`[![Crypto Market Data by CoinPaprika](https://coinpaprika.com/badge.svg?text=Crypto+Market+Data+by+CoinPaprika)](https://coinpaprika.com/vibe-code?ref=vibecode-0825)`}</pre>
-                </div>
-                <div className="flex justify-center mb-4">
-                  <img src="/CoinPaprika Badge.svg" alt="CoinPaprika Badge" className="h-5" />
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Required for all submissions. Includes UTM tracking for analytics.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle>2. MCP Server Badge</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-zinc-800 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-4 text-white">
-                  <pre>{`[![Powered by Paprika MCP](https://coinpaprika.com/mcp-badge.svg)](https://mcp.coinpaprika.com?ref=paprika-vibe-0825)`}</pre>
-                </div>
-                <div className="flex justify-center mb-4">
-                  <img src="/DexPaprika Badge.svg" alt="DexPaprika Badge" className="h-5" />
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Required if using MCP server integration. Shows AI IDE compatibility.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle>3. Partner Co-Brand Badge (This Edition)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="bg-zinc-800 p-4 rounded-lg font-mono text-sm overflow-x-auto mb-4 text-white">
-                  <pre>{`[![Co-hosted with [Partner Name]](https://[partner-domain]/vibe-badge.svg)](https://[partner-domain]/vibe-code?ref=partner-0825)`}</pre>
-                </div>
-                <p className="text-xs text-muted-foreground">
-                  Co-brand badge will be provided by edition partner. Check starter repo for current edition badge.
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="hover:border-primary/50">
-              <CardHeader>
-                <CardTitle>4. Required Topic Tags</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-2">
-                  <p className="text-sm">Add these topics to your GitHub repository:</p>
-                  <div className="flex flex-wrap gap-2 mt-2">
-                    <Badge variant="outline" className="border-primary/30 text-primary">paprika-vibe-0825</Badge>
-                    <Badge variant="outline" className="border-primary/30 text-primary">dexpaprika-api</Badge>
-                    <Badge variant="outline" className="border-primary/30 text-primary">crypto-utility</Badge>
-                    <Badge variant="outline" className="border-primary/30 text-primary">ai-powered</Badge>
-                    <Badge variant="outline" className="border-primary/30 text-primary">defi-tools</Badge>
+                <div className="flex flex-col md:flex-row gap-4 items-center justify-center mb-4">
+                  <div className="text-center">
+                    <img src="/CoinPaprika Badge.svg" alt="CoinPaprika Badge" className="h-8 mb-2" />
+                    <p className="text-xs text-muted-foreground">CoinPaprika Badge</p>
+                  </div>
+                  <div className="text-center">
+                    <img src="/DexPaprika Badge.svg" alt="DexPaprika Badge" className="h-8 mb-2" />
+                    <p className="text-xs text-muted-foreground">DexPaprika Badge</p>
+                  </div>
+                  <div className="text-center">
+                    <div className="h-8 w-24 bg-gray-200 rounded flex items-center justify-center mb-2">
+                      <span className="text-xs text-gray-500">Partner Badge</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">Partner Co-Brand Badge</p>
                   </div>
                 </div>
+                <div className="bg-zinc-800 p-3 rounded-lg font-mono text-xs overflow-x-auto text-white">
+                  <pre>{`[![Crypto Market Data by CoinPaprika](https://coinpaprika.com/badge.svg?text=Crypto+Market+Data+by+CoinPaprika)](https://coinpaprika.com/vibe-code?ref=vibecode-0825)
+[![Powered by Paprika MCP](https://coinpaprika.com/mcp-badge.svg)](https://mcp.coinpaprika.com?ref=paprika-vibe-0825)
+[![Co-hosted with [Partner Name]](https://[partner-domain]/vibe-badge.svg)](https://[partner-domain]/vibe-code?ref=partner-0825)`}</pre>
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Copy these badge codes to your README. Partner badge will be provided by edition partner.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Step 2: Topic Tags */}
+            <Card className="hover:border-primary/50">
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <span className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3">2</span>
+                  Add These Topic Tags to Your Repository
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline" className="border-primary/30 text-primary">paprika-vibe-0825</Badge>
+                  <Badge variant="outline" className="border-primary/30 text-primary">dexpaprika-api</Badge>
+                  <Badge variant="outline" className="border-primary/30 text-primary">crypto-utility</Badge>
+                  <Badge variant="outline" className="border-primary/30 text-primary">ai-powered</Badge>
+                  <Badge variant="outline" className="border-primary/30 text-primary">defi-tools</Badge>
+                </div>
+                <p className="text-xs text-muted-foreground mt-4 text-center">
+                  Add these topics to your GitHub repository settings for better discoverability
+                </p>
               </CardContent>
             </Card>
           </div>
@@ -651,7 +698,7 @@ export default function App() {
                   <div>
                     <h4 className="mb-4 text-primary">✅ Requirements</h4>
                     <ul className="space-y-2 text-sm">
-                      <li>• ≤50 lines of functional code</li>
+                      <li>• ≤100 lines of functional code</li>
                       <li>• Use DexPaprika API + Helper functions</li>
                       <li>• Include required badges & topic tags</li>
                       <li>• Submit via GitHub Issue form</li>
@@ -692,11 +739,11 @@ export default function App() {
           <div className="max-w-4xl mx-auto">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
-                <AccordionTrigger>How do you count the 50 lines of code?</AccordionTrigger>
+                <AccordionTrigger>How do you count the 100 lines of code?</AccordionTrigger>
                 <AccordionContent>
                   We count only functional lines of code, excluding comments, blank lines, and import statements. 
                   GitHub Actions automatically validates your submission and counts lines using our standardized counter. 
-                  Configuration files and documentation don't count toward the limit.
+                  Configuration files and documentation don't count toward the 100-line limit.
                 </AccordionContent>
               </AccordionItem>
 
@@ -729,7 +776,7 @@ export default function App() {
                 <AccordionTrigger>Can I use external libraries and APIs?</AccordionTrigger>
                 <AccordionContent>
                   Yes, but only standard libraries and the partner SDK count as "free" lines. Any external API calls 
-                  or complex library usage counts toward your 50-line limit. We encourage using our micro-helpers 
+                  or complex library usage counts toward your 100-line limit. We encourage using our micro-helpers 
                   which don't count against the limit.
                 </AccordionContent>
               </AccordionItem>
@@ -778,10 +825,12 @@ export default function App() {
                 </p>
                 <Button 
                   className="w-full bg-[#43AA05] hover:bg-[#43AA05]/90 text-white" 
-                  onClick={() => window.open('https://github.com/coinpaprika/vibe-jam', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Fork Repository
+                  <a href="https://github.com/coinpaprika/vibe-jam" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Fork Repository
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -800,10 +849,12 @@ export default function App() {
                 <Button 
                   variant="outline" 
                   className="w-full border-blue-500/30 text-blue-400 hover:bg-blue-500/10"
-                  onClick={() => window.open('https://api.dexpaprika.com', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  API Docs
+                  <a href="https://api.dexpaprika.com" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    API Docs
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -822,10 +873,12 @@ export default function App() {
                 <Button 
                   variant="outline" 
                   className="w-full border-green-500/30 text-green-400 hover:bg-green-500/10"
-                  onClick={() => window.open('https://mcp.coinpaprika.com', '_blank')}
+                  asChild
                 >
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  MCP Setup
+                  <a href="https://mcp.coinpaprika.com" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    MCP Setup
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -843,19 +896,23 @@ export default function App() {
             <Button 
               size="lg" 
               className="bg-[#43AA05] hover:bg-[#43AA05]/90 text-white px-8 py-3"
-              onClick={() => window.open('https://github.com/coinpaprika/vibe-jam', '_blank')}
+              asChild
             >
-              <GitFork className="w-5 h-5 mr-2" />
-              Get Started Now
+              <a href="https://github.com/coinpaprika/vibe-jam" target="_blank" rel="noopener noreferrer">
+                <GitFork className="w-5 h-5 mr-2" />
+                Get Started Now
+              </a>
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
               className="px-8 py-3 border-[#43AA05]/30 text-[#43AA05] hover:bg-[#43AA05]/10"
-              onClick={() => window.open('https://discord.gg/coinpaprika', '_blank')}
+              asChild
             >
-              <Users className="w-5 h-5 mr-2" />
-              Join Discord Community
+              <a href="https://discord.gg/coinpaprika" target="_blank" rel="noopener noreferrer">
+                <Users className="w-5 h-5 mr-2" />
+                Join Discord Community
+              </a>
             </Button>
           </div>
 

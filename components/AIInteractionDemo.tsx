@@ -18,7 +18,7 @@ export const AIInteractionDemo: React.FC<AIInteractionDemoProps> = ({ isScrolled
   const aiResponseRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLPreElement>(null);
 
-  const userPrompt = "Hey, create me a DEX pool analyzer under 50 lines of code";
+  const userPrompt = "Hey, create me a DEX pool analyzer under 100 lines of code";
   const aiResponse = "Sure, let's build it with DexPaprika API:";
   const aiCode = `function analyzeTopPools() {
   // Get top pools on Ethereum
